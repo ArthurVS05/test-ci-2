@@ -1,6 +1,6 @@
 name: jest-and-docker-ci
 on:
-  push:
+  # push:
   pull_request:
     branches:
       - main

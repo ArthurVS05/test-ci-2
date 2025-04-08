@@ -1,6 +1,9 @@
 name: jest-and-docker-ci
-
-on: push
+on:
+  push:
+  pull_request:
+    branches:
+      - main
 
 jobs:
   test-client:
@@ -14,7 +17,8 @@ jobs:
     # Se lance si job précédent s'est exécuté avec succès
     needs: test-client
     # On build seulement l'image docker au merge sur main
-    if: github.base_ref == 'main'
+    # if: github.base_ref == 'main'
+    # if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Login to Docker Hub

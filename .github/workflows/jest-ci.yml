@@ -3,7 +3,7 @@ name: jest-and-docker-ci
 on: push
 
 jobs:
-  test-front:
+  test-client:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
@@ -12,7 +12,7 @@ jobs:
         run: cd client && npm i && npm test
   docker:
     # Se lance si job précédent s'est exécuté avec succès
-    needs: test-front
+    needs: test-client
     # On build seulement l'image docker au merge sur main
     if: github.base_ref == 'main'
     runs-on: ubuntu-latest
